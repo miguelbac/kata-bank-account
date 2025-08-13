@@ -11,7 +11,9 @@ public class CuentaAhorros extends Cuenta {
     @Override
     public boolean consignar(float cantidad) {
         if (activa) {
-            return super.consignar(cantidad);
+            boolean resultado = super.consignar(cantidad);
+            activa = saldo >= 10000;
+            return resultado;
         } else {
             System.out.println("La cuenta no está activa. No se puede consignar.");
             return false;
@@ -21,7 +23,9 @@ public class CuentaAhorros extends Cuenta {
     @Override
     public boolean retirar(float cantidad) {
         if (activa) {
-            return super.retirar(cantidad);
+            boolean resultado = super.retirar(cantidad);
+            activa = saldo >= 10000;
+            return resultado;
         } else {
             System.out.println("La cuenta no está activa. No se puede retirar.");
             return false;

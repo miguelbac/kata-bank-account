@@ -28,7 +28,7 @@ public class Cuenta {
         return true;
     }
 
-    protected float calcularInteresMensual() {
+    public float calcularInteresMensual() {
         float tasaMensual = (tasaAnual / 12f) / 100f;
         float interes = saldo * tasaMensual;
         saldo += interes;
