@@ -57,6 +57,6 @@ public class Cuenta {
     }
 
     public void setComisionMensual(float comisionMensual) {
-        this.comisionMensual = Math.max(0f, comisionMensual);
+        this.comisionMensual = comisionMensual;
     }
 }
