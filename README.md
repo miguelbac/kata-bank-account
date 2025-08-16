@@ -53,7 +53,7 @@ El sistema gestiona operaciones como consignaciones, retiros, cálculo de intere
 
 ---
 
-## 📊 Diagrama de Clases (Mermaid)
+## 📊 Diagrama de Clases
 
 ```mermaid
 classDiagram
@@ -90,3 +90,5 @@ classDiagram
     Cuenta <|-- CuentaAhorros
     Cuenta <|-- CuentaCorriente
 ```
+## 🧪 Cobertura de Tests
+<img width="332" height="157" alt="image" src="https://github.com/user-attachments/assets/2f22c865-9fa0-4e78-a10a-7463f9d85ca7" />
