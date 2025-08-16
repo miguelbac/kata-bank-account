@@ -56,64 +56,37 @@ El sistema gestiona operaciones como consignaciones, retiros, cálculo de intere
 ## 📊 Diagrama de Clases (Mermaid)
 
 ```mermaid
-%% Notación: # = protegido, + = público
 classDiagram
-    direction TB
-
     class Cuenta {
-        # float saldo
-        # int numConsignaciones = 0
-        # int numRetiros = 0
-        # float tasaAnual
-        # float comisionMensual = 0
+        - float saldo
+        - int numConsignaciones = 0
+        - int numRetiros = 0
+        - float tasaAnual
+        - float comisionMensual = 0
         + Cuenta(float saldo, float tasaAnual)
-        + consignar(float cantidad) void
-        + retirar(float cantidad) void
-        + calcularInteresMensual() void
-        + extractoMensual() void
-        + imprimir() string
+        + consignar(float cantidad)
+        + retirar(float cantidad)
+        + calcularInteresMensual()
+        + extractoMensual()
+        + imprimir()
     }
 
     class CuentaAhorros {
-        # boolean activa
-        + CuentaAhorros(float saldo, float tasaAnual)
-        + consignar(float cantidad) void
-        + retirar(float cantidad) void
-        + extractoMensual() void
-        + imprimir() string
-        + isActiva() boolean
+        - boolean activa
+        + consignar(float cantidad)
+        + retirar(float cantidad)
+        + extractoMensual()
+        + imprimir()
     }
 
     class CuentaCorriente {
-        # float sobregiro = 0
-        + CuentaCorriente(float saldo, float tasaAnual)
-        + consignar(float cantidad) void
-        + retirar(float cantidad) void
-        + extractoMensual() void
-        + imprimir() string
+        - float sobregiro = 0
+        + consignar(float cantidad)
+        + retirar(float cantidad)
+        + extractoMensual()
+        + imprimir()
     }
 
     Cuenta <|-- CuentaAhorros
     Cuenta <|-- CuentaCorriente
-
-    %% Reglas de negocio
-    note left of Cuenta
-      • retirar: no permite superar el saldo.
-      • extractoMensual: saldo -= comisionMensual;
-        luego calcularInteresMensual().
-    end note
-
-    note right of CuentaAhorros
-      • activa si saldo >= 10000; si no, inactiva.
-      • consignar/retirar: sólo si activa (invoca heredado).
-      • extractoMensual: si numRetiros > 4,
-        comisionMensual += 1000 por retiro extra.
-      • Tras el extracto, recalcular 'activa'.
-    end note
-
-    note right of CuentaCorriente
-      • retirar: puede exceder el saldo; exceso -> sobregiro.
-      • consignar: invoca heredado; si hay sobregiro,
-        la consignación lo reduce antes que aumentar el saldo.
-      • extractoMensual: igual que en Cuenta.
-    end note
+```
